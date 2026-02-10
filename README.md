@@ -1,3 +1,1 @@
-# project-template
-
-_IMPORTANT_ UPDATE ESLINT WHEN YOU GET TO USING REACT FRAMEWORK
+# battleship
