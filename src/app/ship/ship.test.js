@@ -6,3 +6,9 @@ test("Ship to receive hits", () => {
     testShip.hit();
     expect(testShip.hits).toBe(2);
 })
+
+test("Ship has sunk", () => {
+    let testShip = new Ship(4, 4);
+
+    expect(testShip.isSunk()).toBeTruthy();
+})
