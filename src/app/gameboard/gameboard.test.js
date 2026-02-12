@@ -19,4 +19,16 @@ describe("Testing placements", () => {
         expect(testBoard.board[2][yCoord]).toEqual(testShip);
         expect(testBoard.board[3][yCoord]).toEqual(testShip);
     })
+
+    test("Ship has been placed along y axis", () => {
+        let isHorizontal = false;
+        let [xCoord, yCoord] = [0,0];
+
+        testBoard.placeShip(testShip, xCoord, yCoord, isHorizontal);
+
+        expect(testBoard.board[xCoord][0]).toEqual(testShip);
+        expect(testBoard.board[xCoord][1]).toEqual(testShip);
+        expect(testBoard.board[xCoord][2]).toEqual(testShip);
+        expect(testBoard.board[xCoord][3]).toEqual(testShip);
+    })
 })
