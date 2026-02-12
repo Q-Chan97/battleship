@@ -3,9 +3,12 @@ import { Ship } from "../ship/ship.js";
 
 describe("Testing placements", () => {
 
+    beforeEach(() => {
+        testShip = new Ship(4, 0);
+        testBoard = new GameBoard;
+    })
+
     test("Ship has been placed along x axis", () => {
-        const testShip = new Ship(4, 0);
-        const testBoard = new GameBoard;
         let isHorizontal = true;
         let [xCoord, yCoord] = [0, 0];
 
@@ -16,5 +19,4 @@ describe("Testing placements", () => {
         expect(testBoard.board[2][yCoord]).toEqual(testShip);
         expect(testBoard.board[3][yCoord]).toEqual(testShip);
     })
-
 })
