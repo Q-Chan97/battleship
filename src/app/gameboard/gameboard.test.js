@@ -31,4 +31,11 @@ describe("Testing placements", () => {
         expect(testBoard.board[xCoord][2]).toEqual(testShip);
         expect(testBoard.board[xCoord][3]).toEqual(testShip);
     })
+
+    test("Ship cannot be placed out of bounds", () => {
+        let isHorizontal = true;
+        let [xCoord, yCoord] = [10, 0];
+
+        expect(() => testBoard.placeShip(testShip, xCoord, yCoord, isHorizontal)).toThrow(new Error("Ship out of bounds."))
+    })
 })
