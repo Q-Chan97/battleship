@@ -11,4 +11,12 @@ export class GameBoard {
         this.ships = []; // Keep track of ships
         this.missedShots = []; // Keep track of coords of missed shots
     }
+
+    placeShip(ship, xCoord, yCoord, isHorizontal) {
+        if (isHorizontal) {
+            for (let i = 0; i < ship.length; i++) { // Stores reference to ship along x axis
+                this.board[xCoord + i][yCoord] = ship;
+            }
+        }
+    }
 }
