@@ -18,5 +18,11 @@ export class GameBoard {
                 this.board[xCoord + i][yCoord] = ship;
             }
         }
+
+        if (!isHorizontal) {
+            for (let i = 0; i < ship.length; i++) { // Stores reference to ship along y axis
+                this.board[xCoord][yCoord + i] = ship;
+            }
+        }
     }
 }
