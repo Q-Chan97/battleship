@@ -13,6 +13,10 @@ export class GameBoard {
     }
 
     placeShip(ship, xCoord, yCoord, isHorizontal) {
+        if (xCoord < 0 || xCoord >= 10 || yCoord < 0 || yCoord >= 10) {
+            throw new Error("Ship out of bounds.");
+        }
+
         if (isHorizontal) {
             for (let i = 0; i < ship.length; i++) { // Stores reference to ship along x axis
                 this.board[xCoord + i][yCoord] = ship;
