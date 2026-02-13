@@ -38,4 +38,16 @@ describe("Testing placements", () => {
 
         expect(() => testBoard.placeShip(testShip, xCoord, yCoord, isHorizontal)).toThrow(new Error("Ship out of bounds."))
     })
+
+    test("Two ships cannot be placed on same coordinates", () => {
+        let isHorizontal = true;
+        let [xCoord, yCoord] = [0, 0];
+
+        let badShip = new Ship(3, 0);
+        let [xCoord2, yCoord2] = [1, 0];
+
+        testBoard.placeShip(testShip, xCoord, yCoord, isHorizontal);
+
+        expect(() => testBoard.placeShip(badShip, xCoord2, yCoord2, isHorizontal)).toThrow(new Error("Position is already occupied."))
+    })
 })
