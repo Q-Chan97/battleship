@@ -17,6 +17,10 @@ export class GameBoard {
             throw new Error("Ship out of bounds.");
         }
 
+        if (this.board[xCoord][yCoord] !== null) {
+            throw new Error("Position is already occupied.")
+        }
+
         if (isHorizontal) {
             for (let i = 0; i < ship.length; i++) { // Stores reference to ship along x axis
                 this.board[xCoord + i][yCoord] = ship;
