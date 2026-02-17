@@ -48,6 +48,10 @@ export class GameBoard {
 
     receivedAttack(xCoord, yCoord) {
 
+        if (xCoord < 0 || xCoord >= 10 || yCoord < 0 || yCoord >= 10) {
+            throw new Error("Attack is out of bounds.");
+        }
+
         const target = this.board[xCoord][yCoord];
 
         if (target === null) {
