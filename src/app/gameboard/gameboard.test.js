@@ -80,4 +80,8 @@ describe("Testing attack reads", () => {
         expect(testBoard.receivedAttack(5,8)).toBe("Miss");
         expect(testBoard.missedShots).toContain("5,8");
     })
+
+    test("Attack can't be placed out of bounds", () => {
+        expect(() => testBoard.receivedAttack(11,0)).toThrow(new Error("Attack is out of bounds."))
+    })
 })
