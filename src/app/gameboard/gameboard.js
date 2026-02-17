@@ -53,13 +53,18 @@ export class GameBoard {
         }
 
         const target = this.board[xCoord][yCoord];
+        const targetKey = `${xCoord},${yCoord}`;
+
+        if (this.hitShots.has(targetKey) || this.missedShots.includes(targetKey)) {
+            throw new Error("Coordinates have already been attacked.");
+        }
 
         if (target === null) {
-            this.missedShots.push(`${xCoord},${yCoord}`);
+            this.missedShots.push(targetKey);
             return "Miss";
         }
         target.hit();
-        this.hitShots.add(`${xCoord},${yCoord}`);
+        this.hitShots.add(targetKey);
         return "Hit";
     }
 }
