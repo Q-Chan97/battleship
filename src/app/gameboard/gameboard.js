@@ -32,7 +32,7 @@ export class GameBoard {
         if (isHorizontal) {
             for (let i = 0; i < ship.length; i++) { // Stores reference to ship along x axis
                 this.board[xCoord + i][yCoord] = ship;
-                let occupiedSpace = `${xCoord + i}, ${yCoord}`;
+                let occupiedSpace = `${xCoord + i},${yCoord}`;
                 this.occupiedSpaces.add(occupiedSpace); // Add space to occupied spaces Set
             }
         }
@@ -40,7 +40,7 @@ export class GameBoard {
         if (!isHorizontal) {
             for (let i = 0; i < ship.length; i++) { // Stores reference to ship along y axis
                 this.board[xCoord][yCoord + i] = ship;
-                let occupiedSpace = `${xCoord}, ${yCoord + i}`;
+                let occupiedSpace = `${xCoord},${yCoord + i}`;
                 this.occupiedSpaces.add(occupiedSpace);
             }
         }
