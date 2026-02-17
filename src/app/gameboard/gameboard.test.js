@@ -84,4 +84,9 @@ describe("Testing attack reads", () => {
     test("Attack can't be placed out of bounds", () => {
         expect(() => testBoard.receivedAttack(11,0)).toThrow(new Error("Attack is out of bounds."))
     })
+
+    test("Can't attack same square twice", () => {
+        testBoard.receivedAttack(0,0);
+        expect(() => testBoard.receivedAttack(0,0)).toThrow(new Error("Coordinates have already been attacked."))
+    })
 })
