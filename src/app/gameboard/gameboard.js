@@ -10,6 +10,7 @@ export class GameBoard {
 
         this.ships = []; // Keep track of ships
         this.missedShots = []; // Keep track of coords of missed shots
+        this.hitShots = new Set;
         this.occupiedSpaces = new Set; // Keep track of occupied spaces on board
     }
 
@@ -43,5 +44,18 @@ export class GameBoard {
                 this.occupiedSpaces.add(occupiedSpace);
             }
         }
+    }
+
+    receivedAttack(xCoord, yCoord) {
+
+        const target = this.board[xCoord][yCoord];
+
+        if (target === null) {
+            this.missedShots.push(`${xCoord},${yCoord}`);
+            return "Miss";
+        }
+        target.hit();
+        this.hitShots.add(`${xCoord},${yCoord}`);
+        return "Hit";
     }
 }
