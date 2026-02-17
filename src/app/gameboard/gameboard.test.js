@@ -1,5 +1,6 @@
 import { GameBoard } from "./gameboard.js";
 import { Ship } from "../ship/ship.js";
+import { experiments } from "webpack";
 
 describe("Testing placements", () => {
 
@@ -49,5 +50,34 @@ describe("Testing placements", () => {
         testBoard.placeShip(testShip, xCoord, yCoord, isHorizontal);
 
         expect(() => testBoard.placeShip(badShip, xCoord2, yCoord2, isHorizontal)).toThrow(new Error("Position is already occupied."))
+    })
+})
+
+describe("Testing attack reads", () => {
+
+    beforeEach(() => {
+        testShip = new Ship(4, 0);
+        testBoard = new GameBoard;
+    })
+
+    test("Ship received an attack", () => {
+        let [xCoord, yCoord] = [0,0];
+        let isHorizontal = true;
+
+        testBoard.placeShip(testShip, xCoord, yCoord, isHorizontal);
+
+        expect(testBoard.receivedAttack(0,0)).toBe("Hit");
+        expect(testBoard.hitShots).toContain("0,0");
+        expect(testShip.hits).toEqual(1);
+    })
+
+    test("Attack has missed", () => {
+        let [xCoord, yCoord] = [0,0];
+        let isHorizontal = true;
+
+        testBoard.placeShip(testShip, xCoord, yCoord, isHorizontal);
+
+        expect(testBoard.receivedAttack(5,8)).toBe("Miss");
+        expect(testBoard.missedShots).toContain("5,8");
     })
 })
