@@ -14,12 +14,18 @@ export class GameBoard {
     }
 
     placeShip(ship, xCoord, yCoord, isHorizontal) {
-        if (xCoord < 0 || xCoord >= 10 || yCoord < 0 || yCoord >= 10) {
-            throw new Error("Ship out of bounds.");
-        }
 
-        if (this.board[xCoord][yCoord] !== null) {
-            throw new Error("Position is already occupied.")
+        for (let i = 0; i < ship.length; i++) { // Get all x's and y's for a ship
+            let x = isHorizontal ? xCoord + i : xCoord; 
+            let y = isHorizontal ? yCoord: yCoord + i;
+
+            if (x < 0 || x >= 10 || y < 0 || y >= 10) {
+                throw new Error("Ship out of bounds.");
+            }
+
+            if (this.board[x][y] !== null) {
+                throw new Error("Position is already occupied.");
+            }
         }
 
         if (isHorizontal) {
