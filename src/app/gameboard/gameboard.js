@@ -34,6 +34,7 @@ export class GameBoard {
                 this.board[xCoord + i][yCoord] = ship;
                 let occupiedSpace = `${xCoord + i},${yCoord}`;
                 this.occupiedSpaces.add(occupiedSpace); // Add space to occupied spaces Set
+                this.ships.push(ship);
             }
         }
 
@@ -42,6 +43,7 @@ export class GameBoard {
                 this.board[xCoord][yCoord + i] = ship;
                 let occupiedSpace = `${xCoord},${yCoord + i}`;
                 this.occupiedSpaces.add(occupiedSpace);
+                this.ships.push(ship);
             }
         }
     }
@@ -66,5 +68,20 @@ export class GameBoard {
         target.hit();
         this.hitShots.add(targetKey);
         return "Hit";
+    }
+
+    // Checks to see if ships array is populated or if ships are sunk
+    allShipsSunk() {
+        if (this.ships.length === 0) {
+            return false;
+        }
+
+        for (let ship of this.ships) {
+            if (ship.isSunk() === false) {
+                return false;
+            }
+        }
+        
+        return true;
     }
 }
