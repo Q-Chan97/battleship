@@ -89,4 +89,23 @@ describe("Testing attack reads", () => {
         testBoard.receivedAttack(0,0);
         expect(() => testBoard.receivedAttack(0,0)).toThrow(new Error("Coordinates have already been attacked."))
     })
+
+    test("Ship has been sunk when hits equal length", () => {
+        let [xCoord, yCoord] = [0,0];
+
+        testBoard.placeShip(testShip, 0, 0, true);
+        for (let i = 0; i < testShip.length; i++) {
+            testBoard.receivedAttack(xCoord + i, yCoord);
+        }
+        
+        expect(testShip.isSunk()).toBe(true);
+    })
+
+    test("Ship has not been sunk before all hits", () => {
+        testBoard.placeShip(testShip, 0, 0, true);
+
+        testBoard.receivedAttack(0,0);
+
+        expect(testShip.isSunk()).toBe(false);
+    })
 })
