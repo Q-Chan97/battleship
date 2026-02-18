@@ -108,4 +108,35 @@ describe("Testing attack reads", () => {
 
         expect(testShip.isSunk()).toBe(false);
     })
+
+     test("Returns true when all ships are sunk", () => {
+        const destroyer = new Ship(3, 0);
+        const submarine = new Ship(3, 0);
+        const patrol = new Ship(2, 0);
+        const carrier = new Ship(5, 0);
+
+        testBoard.placeShip(testShip, 0, 0, true);
+        testBoard.placeShip(destroyer, 0, 1, true);
+        testBoard.placeShip(submarine, 0, 2, true);
+        testBoard.placeShip(patrol, 0, 3, true);
+        testBoard.placeShip(carrier, 0, 4, true);
+
+        let ships = [testShip, destroyer, submarine, patrol, carrier];
+
+        // Targets each row and column of ships with received attack
+        for (let row = 0; row < ships.length; row ++) {
+            for (let col = 0; col < ships[row].length; col++) {
+                testBoard.receivedAttack(col, row);
+            }
+        }
+
+        expect(testBoard.allShipsSunk()).toBe(true);
+    })
+
+    test("Returns false is at least one ship is not sunk", () => {
+        testBoard.placeShip(testShip, 0, 0, true);
+        testBoard.receivedAttack(0,0);
+
+        expect(testBoard.allShipsSunk()).toBe(false);
+    })
 })
