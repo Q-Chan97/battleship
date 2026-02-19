@@ -1,6 +1,5 @@
 import { GameBoard } from "./gameboard.js";
 import { Ship } from "../ship/ship.js";
-import { experiments } from "webpack";
 
 describe("Testing placements", () => {
 
