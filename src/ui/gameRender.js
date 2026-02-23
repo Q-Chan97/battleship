@@ -19,6 +19,14 @@ function renderSingleBoard(gameBoard, name, type) {
             cell.dataset.x = x;
             cell.dataset.y = y;
 
+            const ship = gameBoard.board[x][y];
+
+            // // Add ship class if ship is present and belongs to a player. Keeps AI ships invisible
+            if (ship !== null && type === "player") {
+                cell.classList.add("ship");
+                cell.dataset.shipType = ship.type;
+            }
+
             boardDiv.appendChild(cell);
         }
     }
