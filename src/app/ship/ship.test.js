@@ -8,7 +8,7 @@ test("Ship to receive hits", () => {
 })
 
 test("Ship has sunk", () => {
-    let testShip = new Ship(4, 4);
+    let testShip = new Ship("battleship", 4, 4);
 
     expect(testShip.isSunk()).toBeTruthy();
 })
