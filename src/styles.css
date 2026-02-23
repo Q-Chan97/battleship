@@ -83,6 +83,13 @@ body {
     border: 1px solid rgb(2, 41, 68);
 }
 
+/* Ships */
+
+.ship {
+    background-color: greenyellow;
+    border: 1px solid green;
+}
+
 /* Message Box */
 
 #message-box-container {
