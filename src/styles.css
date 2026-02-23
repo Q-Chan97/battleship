@@ -1,0 +1,92 @@
+:root {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1.5;
+    font-size: 16px;
+    font-family:Georgia, 'Times New Roman', Times, serif
+}
+
+body {
+   background-color: rgb(2, 41, 68);
+   min-height: 100vh;
+}
+
+#page-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Header */
+
+#header-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#header-div h1 {
+    font-size: 3.5rem;
+    letter-spacing: 7px;
+    color: rgb(255, 255, 255);
+}
+
+.header-line {
+    height: 2px;
+    width: 90%;
+    background-color: white;
+}
+
+/* Main Content */
+
+#playing-field-container {
+    display: flex;
+    flex-direction: row;
+    gap: 200px;
+}
+
+.gameBoard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.board-title {
+    color: white;
+    letter-spacing: 1.2px;
+}
+
+#player-board {
+    border: 2px solid aqua;
+}
+
+#computer-board {
+    border: 2px solid rgb(255, 63, 63);
+}
+
+.gameBoard {
+    width: 600px;
+    height: 600px;
+}
+
+ /* Message Box */
+
+#message-box-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#message-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    padding: 0px 15px 0px 15px;
+    width: 80%;
+    border: 3px solid aqua;
+    background-color: rgba(3, 57, 57, 0.609);
+    color: white;
+    font-size: 1.1rem;
+}
