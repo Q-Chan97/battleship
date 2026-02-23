@@ -4,7 +4,7 @@ import { Ship } from "../ship/ship.js";
 describe("Testing placements", () => {
 
     beforeEach(() => {
-        testShip = new Ship(4, 0);
+        testShip = new Ship("battleship", 4, 0);
         testBoard = new GameBoard;
     })
 
@@ -43,7 +43,7 @@ describe("Testing placements", () => {
         let isHorizontal = true;
         let [xCoord, yCoord] = [0, 0];
 
-        let badShip = new Ship(3, 0);
+        let badShip = new Ship("destroyer", 3, 0);
         let [xCoord2, yCoord2] = [1, 0];
 
         testBoard.placeShip(testShip, xCoord, yCoord, isHorizontal);
@@ -55,7 +55,7 @@ describe("Testing placements", () => {
 describe("Testing attack reads", () => {
 
     beforeEach(() => {
-        testShip = new Ship(4, 0);
+        testShip = new Ship("battleship", 4, 0);
         testBoard = new GameBoard;
     })
 
@@ -109,10 +109,10 @@ describe("Testing attack reads", () => {
     })
 
      test("Returns true when all ships are sunk", () => {
-        const destroyer = new Ship(3, 0);
-        const submarine = new Ship(3, 0);
-        const patrol = new Ship(2, 0);
-        const carrier = new Ship(5, 0);
+        const destroyer = new Ship("destroyer", 3, 0);
+        const submarine = new Ship("submarine", 3, 0);
+        const patrol = new Ship("patrol", 2, 0);
+        const carrier = new Ship("carrier", 5, 0);
 
         testBoard.placeShip(testShip, 0, 0, true);
         testBoard.placeShip(destroyer, 0, 1, true);
