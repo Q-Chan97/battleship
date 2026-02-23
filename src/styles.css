@@ -83,6 +83,18 @@ body {
     border: 1px solid rgb(2, 41, 68);
 }
 
+.miss {
+    background-image: url(./assets/images/miss-marker.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.hit {
+    background-image: url(./assets/images/hit-marker.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 /* Ships */
 
 .ship {
