@@ -27,6 +27,16 @@ function renderSingleBoard(gameBoard, name, type) {
                 cell.dataset.shipType = ship.type;
             }
 
+            // Add markers to cells once hit
+            const shipKey = `${x},${y}`;
+            if (gameBoard.hitShots.has(shipKey)) {
+                cell.classList.add("hit");
+            }
+
+            else if (gameBoard.missedShots.has(shipKey)) {
+                cell.classList.add("miss");
+            }
+
             boardDiv.appendChild(cell);
         }
     }
