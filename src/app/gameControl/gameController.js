@@ -1,15 +1,22 @@
-import { Player } from "../player/player.js"
 import { renderAllBoards } from "../../ui/gameRender.js";
-import { Ship } from "../ship/ship.js";
 
-const realPlayer = new Player("Shepard", "player");
-const aiPlayer = new Player("computer", "computer")
+export class GameController {
+    constructor(player1, player2) {
+        this.player1 = player1;
+        this.player2 = player2;
+        
+        // Player 1 goes first, these will switch
+        this.currentPlayer = player1;
+        this.otherPlayer = player2;
 
-const carrier = new Ship("battleship", 4)
+        // States for the game- planning ships and match in progress. Also will switch
+        this.isPlanning = true;
+        this.inProgress = false;
 
-export function showGame() {
-    realPlayer.gameBoard.placeShip(carrier, 6, 7, true);
-    realPlayer.gameBoard.receivedAttack(6, 7);
-    realPlayer.gameBoard.receivedAttack(4, 7);
-    renderAllBoards(realPlayer, aiPlayer)
+        this.winner = null; // Keep track of win state
+    }
+
+    startGame() {
+        renderAllBoards(this.player1, this.player2)
+    }
 }
