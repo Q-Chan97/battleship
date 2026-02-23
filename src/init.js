@@ -1,6 +1,6 @@
 // Initialize JS
-import { renderAllBoards } from "./ui/gameRender";
+import { showGame } from "./app/gameControl/gameController";
 
 export function init() {
-    renderAllBoards(realPlayer, aiPlayer);
+    showGame();
 }
