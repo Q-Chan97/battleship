@@ -36,7 +36,7 @@ describe("Player attack tests", () => {
     })
 
     test("Player can attack enemy board", () => {
-        let ship = new Ship(3, 0);
+        let ship = new Ship("destroyer", 3, 0);
         let enemyBoard = aiPlayer.gameBoard;
         enemyBoard.placeShip(ship, 0, 0, true);
         realPlayer.attack(enemyBoard, 0, 0);
@@ -45,7 +45,7 @@ describe("Player attack tests", () => {
     })
 
     test("Ai player can attack real player board", () => {
-        let ship = new Ship(3, 0);
+        let ship = new Ship("destroyer", 3, 0);
         let enemyBoard = realPlayer.gameBoard;
         enemyBoard.placeShip(ship, 0, 0, true);
         aiPlayer.attack(enemyBoard, 0, 0);
