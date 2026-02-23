@@ -29,12 +29,13 @@ export class GameBoard {
             }
         }
 
+        this.ships.push(ship);
+
         if (isHorizontal) {
             for (let i = 0; i < ship.length; i++) { // Stores reference to ship along x axis
                 this.board[xCoord + i][yCoord] = ship;
                 let occupiedSpace = `${xCoord + i},${yCoord}`;
                 this.occupiedSpaces.add(occupiedSpace); // Add space to occupied spaces Set
-                this.ships.push(ship);
             }
         }
 
@@ -43,7 +44,6 @@ export class GameBoard {
                 this.board[xCoord][yCoord + i] = ship;
                 let occupiedSpace = `${xCoord},${yCoord + i}`;
                 this.occupiedSpaces.add(occupiedSpace);
-                this.ships.push(ship);
             }
         }
     }
