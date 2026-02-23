@@ -1,6 +1,11 @@
 // Initialize JS
-import { showGame } from "./app/gameControl/gameController";
+import { GameController } from "./app/gameControl/gameController";
+import { Player } from "./app/player/player";
 
 export function init() {
-    showGame();
+    let realPlayer = new Player("Shepard", "player");
+    let computerPlayer = new Player("Computer", "computer")
+
+    const newGame = new GameController(realPlayer, computerPlayer);
+    newGame.startGame();
 }
