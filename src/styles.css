@@ -67,11 +67,23 @@ body {
 }
 
 .gameBoard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 600px;
     height: 600px;
 }
 
- /* Message Box */
+/* Cells */
+
+.cell {
+    background-color: rgb(20, 90, 140);
+    width: 58px;
+    height: 58px;
+    border: 1px solid rgb(2, 41, 68);
+}
+
+/* Message Box */
 
 #message-box-container {
     display: flex;
