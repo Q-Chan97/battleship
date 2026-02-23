@@ -6,4 +6,11 @@ export class Player {
         this.gameBoard = new GameBoard();
         this.type = type;
     }
+
+    attack(enemyBoard, xCoord, yCoord) {
+
+        let result = enemyBoard.receivedAttack(xCoord, yCoord);
+
+        return result;
+    }
 }
