@@ -20,3 +20,9 @@ export async function getPlayerName() {
         }, { once: true }); // Stops event from being called multiple times
     });
 };
+
+export function displayMessage(message) {
+    const messageBox = document.getElementById("message-box");
+
+    return messageBox.textContent = message;
+}
