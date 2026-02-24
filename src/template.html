@@ -8,6 +8,14 @@
   </head>
   <body>
     <div id="page-container">
+      <dialog id="player-name-dialog">
+        <form id="player-name-form">
+          <h2>BATTLESHIP!</h2>
+          <label title="enter-name-label" for="player-name-input">Commander, enter your name!</label>
+          <input type="text" id="player-name-input" name="player-name-input" minlength="1" maxlength="15" required>
+          <button id="player-name-submit-button" type="button">Start</button>
+        </form>
+      </dialog>
       <div id="header-div">
         <h1>BATTLESHIP!</h1>
         <div class="header-line"></div>
