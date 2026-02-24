@@ -123,12 +123,12 @@ body {
     width: fit-content;
     margin: 10px 3px 0px 3px;
     border: 1px solid navy;
+    background-color: cornflowerblue;
 }
 
 .ship-cell {
     width: 58px;
     height: 58px;
-    background-color: cornflowerblue;
     border: 1px solid navy;
 }
 
@@ -154,9 +154,34 @@ body {
 }
 
 #ships-container {
+    display: flex;
+    flex-direction: column;
     height: 100%;
     border: 5px solid gray;
     background-color: rgb(228, 228, 228);
+}
+
+.selected-ship {
+    background-color: greenyellow;
+    border: 1px solid green;
+}
+
+#rotate-button {
+    display: flex;
+    align-self: center;
+    width: 50px;
+    height: 50px;
+    background-image: url(./assets/images/rotate-button.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 3rem;
+    background-color: transparent;
+    border: none;
+    margin-top: 4px;
+}
+
+#rotate-button:hover {
+    cursor: pointer;
 }
 
 /* Message Box */
