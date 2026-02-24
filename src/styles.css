@@ -115,7 +115,6 @@ body {
     border: 1px solid green;
 }
 
-
 .draggable-ship { 
     display: flex;
     flex-direction: row;
@@ -124,6 +123,13 @@ body {
     margin: 10px 3px 0px 3px;
     border: 1px solid navy;
     background-color: cornflowerblue;
+}
+
+.ship-wrapper {
+    width: 60px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .ship-cell {
@@ -135,6 +141,8 @@ body {
 .ship-name-div {
     color: black;
     font-size: 1.1rem;
+    text-align: center;
+    margin: 5px 0 0 3px;
 }
 
 /* Dock */
@@ -143,6 +151,7 @@ body {
     width: 300px;
     height: 750px;
     display: flex;
+    margin-right: 30px;
     flex-direction: column;
     align-items: center;
     color: white;
@@ -154,9 +163,8 @@ body {
 }
 
 #ships-container {
-    display: flex;
-    flex-direction: column;
     height: 100%;
+    width: 375px;
     border: 5px solid gray;
     background-color: rgb(228, 228, 228);
 }
