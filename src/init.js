@@ -1,11 +1,14 @@
 // Initialize JS
 import { GameController } from "./app/gameControl/gameController";
 import { Player } from "./app/player/player";
+import { getPlayerName } from "./ui/uiEvents";
 
-export function init() {
-    let realPlayer = new Player("Shepard", "player");
+export async function init() {
+    const playerName = await getPlayerName(); // Wait for player name before launching game
+
+    let realPlayer = new Player(playerName, "player");
     let computerPlayer = new Player("Computer", "computer")
 
     const newGame = new GameController(realPlayer, computerPlayer);
-    newGame.startGame();
+    newGame.setupGame();
 }
