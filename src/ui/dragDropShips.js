@@ -43,6 +43,14 @@ export function createPlayerFleet() {
         shipWrapper.appendChild(shipDiv);
 
         shipDockContainer.appendChild(shipWrapper);
+
+        // Rotate ship event listener
+
+        let rotateButton = document.getElementById("rotate-button");
+
+        rotateButton.addEventListener("click", () => {
+            rotateSelectedShip();
+        })
     }
 }
 
@@ -59,4 +67,20 @@ function selectShip(shipDiv) {
 
     selectedShip = shipDiv; // Assigns new selected ship
     selectedShip.classList.add("selected-ship");
+}
+
+function rotateSelectedShip() {
+    if (selectedShip === null) return;
+
+    if (selectedShip) {
+       let orientation = selectedShip.dataset.isHorizontal;
+
+       if (orientation === "true") {
+        selectedShip.dataset.isHorizontal = "false";
+        selectedShip.style.flexDirection = "column";
+       } else {
+        selectedShip.dataset.isHorizontal = "true";
+        selectedShip.style.flexDirection = "row";
+       }
+    }
 }
