@@ -41,10 +41,23 @@ body {
 
 /* Main Content */
 
+#main-content-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
 #playing-field-container {
     display: flex;
     flex-direction: row;
-    gap: 200px;
+    gap: 50px;
+}
+
+#game-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .gameBoard-container {
@@ -102,12 +115,57 @@ body {
     border: 1px solid green;
 }
 
+
+.draggable-ship { 
+    display: flex;
+    flex-direction: row;
+    cursor: grab;
+    width: fit-content;
+    margin: 10px 3px 0px 3px;
+    border: 1px solid navy;
+}
+
+.ship-cell {
+    width: 58px;
+    height: 58px;
+    background-color: cornflowerblue;
+    border: 1px solid navy;
+}
+
+.ship-name-div {
+    color: black;
+    font-size: 1.1rem;
+}
+
+/* Dock */
+
+#dock {
+    width: 300px;
+    height: 750px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+#dock h3 {
+    font-size: 1.3rem;
+    margin: 5px 0 0 0;
+}
+
+#ships-container {
+    height: 100%;
+    border: 5px solid gray;
+    background-color: rgb(228, 228, 228);
+}
+
 /* Message Box */
 
 #message-box-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 #message-box {
