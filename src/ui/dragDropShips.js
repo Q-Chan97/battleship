@@ -1,6 +1,10 @@
 import { shipTypes } from "../app/ship/shipTypes.js";
 import { Ship } from "../app/ship/ship";
 
+
+let selectedShip = null;
+
+
 export function createPlayerFleet() {
     const shipDockContainer = document.getElementById("ships-container");
 
@@ -23,6 +27,11 @@ export function createPlayerFleet() {
             shipDiv.appendChild(cellDiv)
         }
 
+        // Ship selection for fleet
+        shipDiv.addEventListener("click", () => {
+            selectShip(shipDiv);
+        });
+
         let shipWrapper = document.createElement("div");
         shipWrapper.classList.add("ship-wrapper");
 
@@ -35,4 +44,19 @@ export function createPlayerFleet() {
 
         shipDockContainer.appendChild(shipWrapper);
     }
+}
+
+function selectShip(shipDiv) {
+    if (selectedShip === shipDiv) { // Toggle same ship being selected
+        selectedShip.classList.remove("selected-ship");
+        selectedShip = null;
+        return;
+    }
+
+    if (selectedShip) { // Removes class from previous selected ship
+        selectedShip.classList.remove("selected-ship");
+    }
+
+    selectedShip = shipDiv; // Assigns new selected ship
+    selectedShip.classList.add("selected-ship");
 }
