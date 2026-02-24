@@ -121,3 +121,72 @@ body {
     color: white;
     font-size: 1.1rem;
 }
+
+/* Player name form */
+
+#player-name-dialog {
+    width: 325px;
+    height: 325px;
+    border: 3px solid aqua;
+    background-color: rgba(3, 57, 57, 0.609);
+    margin: auto;
+}
+
+#player-name-dialog[open] {
+    display: flex;
+    justify-content: center;
+}
+
+#player-name-dialog::backdrop {
+    background-color: rgb(2, 41, 68);
+}
+
+#player-name-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: white;
+}
+
+#player-name-form input {
+    text-align: center;
+    width: 300px;
+    height: 30px;
+    border: 2px solid white;
+    border-radius: 5px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+#player-name-form h2 {
+    font-size: 1.5rem;
+}
+
+#player-name-form label {
+    font-size: 1.3rem;
+}
+
+#player-name-form input:focus {
+    outline: none;
+    border: 2px solid aqua;
+}
+
+#player-name-form input:invalid {
+    outline: none;
+    border: 2px solid red;
+}
+
+#player-name-form button {
+    width: 100px;
+    height: 40px;
+    font-size: 1.1rem;
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+
+#player-name-form button:hover {
+    cursor: pointer;
+}
