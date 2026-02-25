@@ -19,7 +19,7 @@ export class GameController {
     }
 
     setupGame() {
-        renderAllBoards(this.player1, this.player2);
+        renderAllBoards(this.player1, this.player2, this.isPlanning);
 
         displayMessage("Place your ships, Commander!");
 
