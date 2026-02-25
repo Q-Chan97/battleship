@@ -1,10 +1,12 @@
-export function renderAllBoards(player, computer) {
-    renderSingleBoard(player.gameBoard, player.name, player.type);
+import { handleDropShip } from "./dragDropShips.js";
+
+export function renderAllBoards(player, computer, planningStage) {
+    renderSingleBoard(player.gameBoard, player.name, player.type, planningStage);
 
     renderSingleBoard(computer.gameBoard, computer.name, computer.type);
 }
 
-function renderSingleBoard(gameBoard, name, type) {
+function renderSingleBoard(gameBoard, name, type, planningStage) {
     const boardDiv = document.createElement("div");
     boardDiv.classList.add("gameBoard");
 
@@ -25,6 +27,15 @@ function renderSingleBoard(gameBoard, name, type) {
             if (ship !== null && type === "player") {
                 cell.classList.add("ship");
                 cell.dataset.shipType = ship.type;
+            }
+
+            // Player board cells listen for drop
+            if (planningStage === true && type === "player") {
+                cell.addEventListener("dragover", (e) => {
+                    e.preventDefault();
+                });
+
+                cell.addEventListener("drop", handleDropShip);
             }
 
             // Add markers to cells once hit
