@@ -107,3 +107,25 @@ function handleDragEnd() {
     }
     draggedShip = null;
 }
+
+// Handles ship drop
+export function handleDropShip(e) {
+    e.preventDefault();
+
+    if (!draggedShip) return;
+
+    // Get x and y data from cell
+    const x = parseInt(e.currentTarget.dataset.x);
+    const y = parseInt(e.currentTarget.dataset.y);
+
+    // Get length and orientation from dragged ship
+    const isHorizontal = draggedShip.dataset.isHorizontal === "true";
+    const length = parseInt(draggedShip.dataset.length);
+
+    console.log("Drop attempt", {
+        x,
+        y,
+        length, 
+        isHorizontal
+    })
+}
