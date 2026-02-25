@@ -3,7 +3,7 @@ import { Ship } from "../app/ship/ship";
 
 
 let selectedShip = null;
-
+let draggedShip = null;
 
 export function createPlayerFleet() {
     const shipDockContainer = document.getElementById("ships-container");
@@ -31,6 +31,11 @@ export function createPlayerFleet() {
         shipDiv.addEventListener("click", () => {
             selectShip(shipDiv);
         });
+        
+        // Make ships draggable elements
+        shipDiv.setAttribute("draggable", true);
+        shipDiv.addEventListener("dragstart", handleDragging);
+        shipDiv.addEventListener("dragend", handleDragEnd);
 
         let shipWrapper = document.createElement("div");
         shipWrapper.classList.add("ship-wrapper");
@@ -83,4 +88,18 @@ function rotateSelectedShip() {
         selectedShip.style.flexDirection = "row";
        }
     }
+}
+
+// Assigns dragged ship
+function handleDragging(e) {
+    draggedShip = e.currentTarget;
+    draggedShip.classList.add("dragging-ship");
+}
+
+// Resets dragged ship
+function handleDragEnd() {
+    if (draggedShip) {
+        draggedShip.classList.remove("dragging-ship");
+    }
+    draggedShip = null;
 }
