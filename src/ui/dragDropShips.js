@@ -1,5 +1,6 @@
 import { shipTypes } from "../app/ship/shipTypes.js";
 import { Ship } from "../app/ship/ship";
+import { GameController } from "../app/gameControl/gameController.js";
 
 
 let selectedShip = null;
@@ -28,7 +29,7 @@ export function createPlayerFleet() {
         }
 
         // Ship selection for fleet
-        shipDiv.addEventListener("click", () => {
+        shipDiv.addEventListener("mousedown", () => {
             selectShip(shipDiv);
         });
         
