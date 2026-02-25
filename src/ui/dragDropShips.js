@@ -1,12 +1,11 @@
 import { shipTypes } from "../app/ship/shipTypes.js";
 import { Ship } from "../app/ship/ship";
-import { GameController } from "../app/gameControl/gameController.js";
 
 
 let selectedShip = null;
 let draggedShip = null;
 
-export function createPlayerFleet() {
+export function createPlayerFleet(planningStage) {
     const shipDockContainer = document.getElementById("ships-container");
 
     for (let shipData of Object.values(shipTypes)) {
@@ -29,14 +28,16 @@ export function createPlayerFleet() {
         }
 
         // Ship selection for fleet
-        shipDiv.addEventListener("mousedown", () => {
+        shipDiv.addEventListener("click", () => {
             selectShip(shipDiv);
         });
         
         // Make ships draggable elements
-        shipDiv.setAttribute("draggable", true);
-        shipDiv.addEventListener("dragstart", handleDragging);
-        shipDiv.addEventListener("dragend", handleDragEnd);
+        if (planningStage === true) {
+            shipDiv.setAttribute("draggable", true);
+            shipDiv.addEventListener("dragstart", handleDragging);
+            shipDiv.addEventListener("dragend", handleDragEnd);
+        }
 
         let shipWrapper = document.createElement("div");
         shipWrapper.classList.add("ship-wrapper");
@@ -54,9 +55,11 @@ export function createPlayerFleet() {
 
         let rotateButton = document.getElementById("rotate-button");
 
-        rotateButton.addEventListener("click", () => {
-            rotateSelectedShip();
-        })
+        if (planningStage === true) {
+            rotateButton.addEventListener("click", () => {
+                rotateSelectedShip();
+            })
+        }
     }
 }
 
