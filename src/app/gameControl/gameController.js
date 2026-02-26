@@ -29,11 +29,7 @@ export class GameController {
     }
 
     gameTransition() {
-        const shipDockContainer = document.getElementById("ships-container");
-
-        let remainingShips = shipDockContainer.querySelectorAll(".ship-wrapper").length;
-
-        if (remainingShips === 0) {
+        if (this.player1.allShipsPlaced()) {
             this.playGame();
         }
     }
