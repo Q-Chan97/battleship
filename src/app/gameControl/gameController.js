@@ -24,11 +24,18 @@ export class GameController {
         displayMessage("Place your ships, Commander!");
 
         createPlayerFleet(this.isPlanning, this); // Pass plan state and controller to function
-        
-        // while there are still draggable ships, wait for player to finish placement
 
-        // Have UI call playGame
+        this.gameTransition();
+    }
 
+    gameTransition() {
+        const shipDockContainer = document.getElementById("ships-container");
+
+        let remainingShips = shipDockContainer.querySelectorAll(".ship-wrapper").length;
+
+        if (remainingShips === 0) {
+            this.playGame();
+        }
     }
 
     playGame() {
