@@ -77,7 +77,24 @@ export class GameController {
     }
 
     checkWinner() {
-        
+        const computerBoard = document.getElementById("computer-board")
+
+        if (this.player2.gameBoard.allShipsSunk()) {
+            this.winner = this.player1;
+            this.inProgress = false;
+            computerBoard.style.pointerEvents = "none"
+            displayMessage(`Congratulations Commander ${this.player1.name}, we've defeated the enemy! Fantastic strategy!`);
+            return true
+        }
+
+        if (this.player1.gameBoard.allShipsSunk()) {
+            this.winner = this.player2;
+            this.inProgress = false;
+            computerBoard.style.pointerEvents = "none"
+            displayMessage("The enemy has routed us, fall back! We'll fight another day Commander...");
+        }
+
+        else return false;
     }
 
     gameReset() {
