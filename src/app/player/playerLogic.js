@@ -4,6 +4,8 @@ import { displayMessage } from "../../ui/uiEvents";
 // Player firing
 export function handlePlayerFire(controller, e) {
 
+    if (controller.currentPlayer !== controller.player1) return;
+
     const x = parseInt(e.currentTarget.dataset.x);
     const y = parseInt(e.currentTarget.dataset.y);
 
