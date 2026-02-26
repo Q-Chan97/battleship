@@ -23,7 +23,7 @@ export class GameController {
 
         displayMessage("Place your ships, Commander!");
 
-        createPlayerFleet(this.isPlanning); // Pass plan state and player 1 to function
+        createPlayerFleet(this.isPlanning, this); // Pass plan state and controller to function
         
         // while there are still draggable ships, wait for player to finish placement
 
