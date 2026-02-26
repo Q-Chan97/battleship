@@ -31,6 +31,9 @@ export class GameController {
     gameTransition() {
         if (this.player1.allShipsPlaced()) {
             this.playGame();
+
+            const dockDiv = document.getElementById("dock-container");
+            if (dockDiv) dock.remove();
         }
     }
 
