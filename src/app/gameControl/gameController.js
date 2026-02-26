@@ -20,7 +20,7 @@ export class GameController {
     }
 
     setupGame() {
-        renderAllBoards(this.player1, this.player2, this.isPlanning);
+        renderAllBoards(this.player1, this.player2, this.isPlanning, this);
 
         displayMessage("Place your ships, Commander!");
 
@@ -45,11 +45,9 @@ export class GameController {
 
         placeComputerShips(this.player2.gameBoard);
 
-        renderAllBoards(this.player1, this.player2, this.isPlanning)
+        renderAllBoards(this.player1, this.player2, this.isPlanning, this)
 
         displayMessage("Fire away, Commander!")
-
-        // take turn player OR ai? check
 
         // check winner
 
@@ -57,9 +55,7 @@ export class GameController {
     }
 
     takeTurn() {
-        // If current player is player, do player stuff (from player logic js file?);
-
-        // If current player is computer, do computer stuff from ai logic js file
+        // Ai turn logic
     }
 
 
