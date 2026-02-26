@@ -21,6 +21,7 @@ export async function getPlayerName() {
     });
 };
 
+// Updates message
 export function displayMessage(message) {
     const messageBox = document.getElementById("message-box");
 
