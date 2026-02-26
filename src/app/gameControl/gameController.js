@@ -48,19 +48,23 @@ export class GameController {
         renderAllBoards(this.player1, this.player2, this.isPlanning, this)
 
         displayMessage("Fire away, Commander!")
-
-        // check winner
-
-        // If no winner, switch turn and keep playing : takeTurn => checkWinner => switchTurn
     }
 
     takeTurn() {
-        // Ai turn logic
+        
     }
 
 
     switchTurn() {
-        // Swap current and other player roles
+        if (this.currentPlayer === this.player1) {
+            this.currentPlayer = this.player2;
+            this.otherPlayer = this.player1;
+        }
+
+        if (this.currentPlayer === this.player2) {
+            this.currentPlayer = this.player1;
+            this.otherPlayer = this.player2;
+        }
     }
 
     checkWinner() {
