@@ -6,10 +6,10 @@ import { renderAllBoards } from "./gameRender.js";
 let selectedShip = null;
 let draggedShip = null;
 let gameController = null;
+const shipDockContainer = document.getElementById("ships-container");
 
 export function createPlayerFleet(planningStage, controller) {
     gameController = controller;
-    const shipDockContainer = document.getElementById("ships-container");
 
     for (let shipData of Object.values(shipTypes)) {
         let newShip = new Ship(shipData.type, shipData.length) // New Ship instance
@@ -135,6 +135,8 @@ export function handleDropShip(e) {
         renderAllBoards(gameController.player1, gameController.player2, true);
 
         draggedShip.parentElement.remove();
+
+        gameController.gameTransition();
     }
 
     catch (error) {
