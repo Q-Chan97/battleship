@@ -13,4 +13,12 @@ export class Player {
 
         return result;
     }
+
+    allShipsPlaced() {
+        let ships = this.gameBoard.ships;
+
+        if (ships.length === 5) {
+            return true;
+        } else return false;
+    }
 }
