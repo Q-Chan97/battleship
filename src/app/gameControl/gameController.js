@@ -1,6 +1,7 @@
 import { renderAllBoards } from "../../ui/gameRender.js";
 import { displayMessage } from "../../ui/uiEvents.js";
 import { createPlayerFleet } from "../../ui/dragDropShips.js";
+import { placeComputerShips } from "../botLogic/botLogic.js";
 
 export class GameController {
     constructor(player1, player2) {
@@ -42,7 +43,11 @@ export class GameController {
         this.isPlanning = false;
         this.inProgress = true;
 
-        // randomly place ai ships (ai logic js file)
+        placeComputerShips(this.player2.gameBoard);
+
+        renderAllBoards(this.player1, this.player2, this.isPlanning)
+
+        displayMessage("Fire away, Commander!")
 
         // take turn player OR ai? check
 
