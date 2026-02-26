@@ -1,12 +1,13 @@
 import { handleDropShip } from "./dragDropShips.js";
+import { handlePlayerFire } from "../app/player/playerLogic.js";
 
-export function renderAllBoards(player, computer, planningStage) {
-    renderSingleBoard(player.gameBoard, player.name, player.type, planningStage);
+export function renderAllBoards(player, computer, planningStage, controller) {
+    renderSingleBoard(player.gameBoard, player.name, player.type, planningStage, controller);
 
-    renderSingleBoard(computer.gameBoard, computer.name, computer.type);
+    renderSingleBoard(computer.gameBoard, computer.name, computer.type, planningStage, controller);
 }
 
-function renderSingleBoard(gameBoard, name, type, planningStage) {
+function renderSingleBoard(gameBoard, name, type, planningStage, controller) {
     const boardDiv = document.createElement("div");
     boardDiv.classList.add("gameBoard");
 
@@ -36,6 +37,11 @@ function renderSingleBoard(gameBoard, name, type, planningStage) {
                 });
 
                 cell.addEventListener("drop", handleDropShip);
+            }
+
+            // Enemy cells listen for being fired on
+            if (planningStage === false && type === "computer") {
+                cell.addEventListener("click", (e) => handlePlayerFire(controller, e));
             }
 
             // Add markers to cells once hit
