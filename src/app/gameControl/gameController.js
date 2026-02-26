@@ -56,11 +56,11 @@ export class GameController {
             return;
         }
 
-        // Small delay of 2 seconds
+        // Small delay of 1.5 seconds
         if (this.currentPlayer === this.player2) {
             setTimeout(() => {
                 handleComputerFire(this.player1.gameBoard, this)
-            }, 2000)
+            }, 1500)
         }
     }
 
@@ -77,7 +77,7 @@ export class GameController {
     }
 
     checkWinner() {
-        // If all ships are sunk (allShipsSunk from gameBoard), declare winner for current player
+        
     }
 
     gameReset() {
