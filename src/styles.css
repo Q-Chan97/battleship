@@ -283,3 +283,41 @@ body {
 #player-name-form button:hover {
     cursor: pointer;
 }
+
+/* Play again modal */
+
+#play-again-dialog {
+    width: 150px;
+    height: 150px;
+    border: 3px solid aqua;
+    background-color: rgb(3, 57, 57);
+    margin: auto;
+    color: white;
+}
+
+#play-again-dialog[open] {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#play-again-dialog::backdrop {
+    background-color: rgba(2, 41, 68, 0.632);
+}
+
+#play-again-dialog h3 {
+    font-size: 1.5rem;
+}
+
+#play-again-dialog button {
+    width: 100px;
+    height: 40px;
+    font-size: 1.1rem;
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+
+#play-again-dialog button:hover {
+    cursor: pointer;
+}
