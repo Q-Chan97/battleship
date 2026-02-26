@@ -1,11 +1,14 @@
 import { shipTypes } from "../app/ship/shipTypes.js";
 import { Ship } from "../app/ship/ship";
+import { renderAllBoards } from "./gameRender.js";
 
 
 let selectedShip = null;
 let draggedShip = null;
+let gameController = null;
 
-export function createPlayerFleet(planningStage) {
+export function createPlayerFleet(planningStage, controller) {
+    gameController = controller;
     const shipDockContainer = document.getElementById("ships-container");
 
     for (let shipData of Object.values(shipTypes)) {
@@ -50,16 +53,16 @@ export function createPlayerFleet(planningStage) {
         shipWrapper.appendChild(shipDiv);
 
         shipDockContainer.appendChild(shipWrapper);
+    }
 
-        // Rotate ship event listener
+    // Rotate ship event listener
 
-        let rotateButton = document.getElementById("rotate-button");
+    let rotateButton = document.getElementById("rotate-button");
 
-        if (planningStage === true) {
-            rotateButton.addEventListener("click", () => {
-                rotateSelectedShip();
-            })
-        }
+    if (planningStage === true) {
+        rotateButton.addEventListener("click", () => {
+            rotateSelectedShip();
+        })
     }
 }
 
@@ -121,11 +124,20 @@ export function handleDropShip(e) {
     // Get length and orientation from dragged ship
     const isHorizontal = draggedShip.dataset.isHorizontal === "true";
     const length = parseInt(draggedShip.dataset.length);
+    const type = draggedShip.dataset.type;
 
-    console.log("Drop attempt", {
-        x,
-        y,
-        length, 
-        isHorizontal
-    })
+    const shipToPlace = new Ship(type, length);
+
+    // Place on board or show error
+    try {
+        gameController.player1.gameBoard.placeShip(shipToPlace, x, y, isHorizontal);
+
+        renderAllBoards(gameController.player1, gameController.player2, true);
+
+        draggedShip.parentElement.remove();
+    }
+
+    catch (error) {
+        alert(error);
+    }
 }
