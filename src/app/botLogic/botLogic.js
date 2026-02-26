@@ -1,6 +1,8 @@
 // Computer player logic
+import { displayMessage } from "../../ui/uiEvents.js";
 import { Ship } from "../ship/ship.js";
 import { shipTypes } from "../ship/shipTypes.js";
+import { renderAllBoards } from "../../ui/gameRender.js";
 
 export function placeComputerShips(computerBoard) {
     const shipsArray = Object.values(shipTypes);
@@ -36,4 +38,59 @@ export function placeComputerShips(computerBoard) {
             }
         }
     }
+}
+
+export function handleComputerFire(playerBoard, controller) {
+
+    // Find random coordinates
+    let x = Math.floor(Math.random() * 10);
+    let y = Math.floor(Math.random() * 10);
+
+    // Filters out coordinates that are in hitShots or missedShots
+    while (playerBoard.hitShots.has(`${x},${y}`) || playerBoard.missedShots.has(`${x},${y}`)) {
+        x = Math.floor(Math.random() * 10);
+        y = Math.floor(Math.random() * 10);
+    }
+
+    const cell = document.querySelector(`#player-board .cell[data-x="${x}"][data-y="${y}]"`);
+
+    try {
+        const result = playerBoard.receivedAttack(x, y);
+
+        // Updates boards after computer hit
+        renderAllBoards(controller.player1, controller.player2, false, controller);
+
+        if (result === "Hit") {
+            
+            let sunkShip = checkSunkShip(playerBoard, x, y);
+
+            if (sunkShip) {
+                displayMessage(`The enemy has sunk our ${sunkShip.type}, Commander...`)
+            } else displayMessage("The enemy hit one of ours, sir!");
+        }
+
+        if (result === "Miss") {
+            displayMessage("The enemy missed!")
+        }
+
+        // Check win condition
+        if (controller.checkWinner()) return;
+
+        // Switch to player turn
+        controller.switchTurn();
+    }
+
+    catch (error) {
+        console.log(error);
+    }
+}
+
+// Finds ship type once sunk
+function checkSunkShip(playerBoard, x, y) {
+    const target = playerBoard.board[x][y];
+
+    if (target && target.isSunk()) {
+        return target;
+    }
+    return null;
 }
