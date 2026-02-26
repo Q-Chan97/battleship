@@ -2,6 +2,7 @@ import { renderAllBoards } from "../../ui/gameRender.js";
 import { displayMessage } from "../../ui/uiEvents.js";
 import { createPlayerFleet } from "../../ui/dragDropShips.js";
 import { placeComputerShips } from "../botLogic/botLogic.js";
+import { handleComputerFire } from "../botLogic/botLogic.js";
 
 export class GameController {
     constructor(player1, player2) {
@@ -51,9 +52,17 @@ export class GameController {
     }
 
     takeTurn() {
-        
-    }
+        if (this.currentPlayer === this.player1) {
+            return;
+        }
 
+        // Small delay of 2 seconds
+        if (this.currentPlayer === this.player2) {
+            setTimeout(() => {
+                handleComputerFire(this.player1.gameBoard, this)
+            }, 2000)
+        }
+    }
 
     switchTurn() {
         if (this.currentPlayer === this.player1) {
@@ -61,7 +70,7 @@ export class GameController {
             this.otherPlayer = this.player1;
         }
 
-        if (this.currentPlayer === this.player2) {
+        else {
             this.currentPlayer = this.player1;
             this.otherPlayer = this.player2;
         }
