@@ -33,6 +33,7 @@ export function handlePlayerFire(controller, e) {
 
         // Switch to AI
         controller.switchTurn();
+        controller.takeTurn();
     }
 
     catch (error) {
