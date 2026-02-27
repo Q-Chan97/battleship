@@ -6,10 +6,11 @@ import { renderAllBoards } from "./gameRender.js";
 let selectedShip = null;
 let draggedShip = null;
 let gameController = null;
-const shipDockContainer = document.getElementById("ships-container");
 
 export function createPlayerFleet(planningStage, controller) {
     gameController = controller;
+    const shipDockContainer = document.getElementById("ships-container");
+    const rotateButton = document.getElementById("rotate-button");
 
     for (let shipData of Object.values(shipTypes)) {
         let newShip = new Ship(shipData.type, shipData.length) // New Ship instance
@@ -56,8 +57,6 @@ export function createPlayerFleet(planningStage, controller) {
     }
 
     // Rotate ship event listener
-
-    let rotateButton = document.getElementById("rotate-button");
 
     if (planningStage === true) {
         rotateButton.addEventListener("click", () => {
