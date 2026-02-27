@@ -84,4 +84,14 @@ export class GameBoard {
         
         return true;
     }
+
+    resetBoard() {
+        this.board = Array.from({ length: this.rows }, () =>  
+            Array(this.cols).fill(null)
+        );
+        this.missedShots.clear();
+        this.hitShots.clear();
+        this.occupiedSpaces.clear();
+        this.ships = [];
+    }
 }
