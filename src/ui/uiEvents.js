@@ -36,3 +36,11 @@ export function setupResetButton(controller) {
         controller.gameReset();
     })
 }
+
+export function toggleDockVisibility(planningStage) {
+    const dock = document.getElementById("dock-container");
+
+    if (planningStage === true) {
+        dock.style.display = "flex";
+    } else dock.style.display = "none";
+}
