@@ -16,7 +16,6 @@ function renderSingleBoard(gameBoard, name, type, planningStage, controller) {
         for (let x = 0; x < gameBoard.cols; x++) {
             let cell = document.createElement("div");
             cell.classList.add("cell");
-            cell.textContent = `${x},${y}`; // Temporary, just to check if coordinates are aligned
 
             // Assign x and y coords to cell's dataset
             cell.dataset.x = x;
