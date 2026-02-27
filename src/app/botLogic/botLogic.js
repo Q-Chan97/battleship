@@ -52,8 +52,6 @@ export function handleComputerFire(playerBoard, controller) {
         y = Math.floor(Math.random() * 10);
     }
 
-    const cell = document.querySelector(`#player-board .cell[data-x="${x}"][data-y="${y}]"`);
-
     try {
         const result = playerBoard.receivedAttack(x, y);
 
