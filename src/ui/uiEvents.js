@@ -27,3 +27,12 @@ export function displayMessage(message) {
 
     return messageBox.textContent = message;
 }
+
+// Button listener- resets game
+export function setupResetButton(controller) {
+    const newGameButton = document.getElementById("new-game-button");
+
+    newGameButton.addEventListener("click", () => {
+        controller.gameReset();
+    })
+}
