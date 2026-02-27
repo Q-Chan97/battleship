@@ -1,5 +1,5 @@
 import { renderAllBoards } from "../../ui/gameRender.js";
-import { displayMessage } from "../../ui/uiEvents.js";
+import { displayMessage, toggleDockVisibility } from "../../ui/uiEvents.js";
 import { createPlayerFleet } from "../../ui/dragDropShips.js";
 import { placeComputerShips } from "../botLogic/botLogic.js";
 import { handleComputerFire } from "../botLogic/botLogic.js";
@@ -33,8 +33,6 @@ export class GameController {
     gameTransition() {
         if (this.player1.allShipsPlaced()) {
             this.playGame();
-
-            // Hide dock ?
         }
     }
 
@@ -42,6 +40,8 @@ export class GameController {
         // Update game state
         this.isPlanning = false;
         this.inProgress = true;
+
+        toggleDockVisibility(this.isPlanning);
 
         placeComputerShips(this.player2.gameBoard);
 
@@ -112,6 +112,8 @@ export class GameController {
 
         const showNewGameDialog = document.getElementById("play-again-dialog");
         showNewGameDialog.close();
+
+        toggleDockVisibility(this.isPlanning);
 
         this.setupGame();
     }
