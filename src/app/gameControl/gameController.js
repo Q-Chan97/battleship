@@ -34,8 +34,7 @@ export class GameController {
         if (this.player1.allShipsPlaced()) {
             this.playGame();
 
-            const dockDiv = document.getElementById("dock-container");
-            if (dockDiv) dock.remove();
+            // Hide dock ?
         }
     }
 
@@ -84,6 +83,7 @@ export class GameController {
             this.inProgress = false;
             computerBoard.style.pointerEvents = "none"
             displayMessage(`Congratulations Commander ${this.player1.name}, we've defeated the enemy! Fantastic strategy!`);
+            this.showNewGameDialog();
             return true
         }
 
@@ -92,13 +92,34 @@ export class GameController {
             this.inProgress = false;
             computerBoard.style.pointerEvents = "none"
             displayMessage("The enemy has routed us, fall back! We'll fight another day Commander...");
+            this.showNewGameDialog();
+            return true;
         }
 
         else return false;
     }
 
     gameReset() {
-        // Clear board
-        // Start new game (with same player name?)
+        this.currentPlayer = this.player1;
+        this.otherPlayer = this.player2;
+
+        this.player1.gameBoard.resetBoard();
+        this.player2.gameBoard.resetBoard();
+
+        this.isPlanning = true;
+        this.inProgress = false;
+        this.winner = null;
+
+        const showNewGameDialog = document.getElementById("play-again-dialog");
+        showNewGameDialog.close();
+
+        this.setupGame();
+    }
+
+    showNewGameDialog() {
+        const dialog = document.getElementById("play-again-dialog");
+        setTimeout(() => {
+            dialog.showModal();
+        }, 3000);
     }
 }
